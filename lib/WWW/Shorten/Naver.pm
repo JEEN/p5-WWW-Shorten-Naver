@@ -1,5 +1,6 @@
 package WWW::Shorten::Naver;
-use Moo;
+use strict;
+use warnings;
 use Carp ();
 use JSON::MaybeXS;
 use URI ();
@@ -7,7 +8,7 @@ use Scalar::Util qw(blessed);
 use parent qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw(new VERSION);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 $VERSION = eval $VERSION;
 
 use constant NAVER_SHORTEN_API_ENDPOINT => $ENV{NAVER_SHORTEN_API_URL} || 'https://openapi.naver.com/v1/util/shorturl';
