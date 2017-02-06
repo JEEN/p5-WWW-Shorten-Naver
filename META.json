@@ -1,7 +1,7 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Interface to shortening URLs using Naver Shorten URL API",
    "author" : [
-      "Jeen Lee <aiatejin@gmail.com>"
+      "Jeen Lee <F<jeen@perl.kr>>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v3.0.9, CPAN::Meta::Converter version 2.150010",
@@ -52,6 +52,20 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/JEEN/p5-WWW-Shorten-Naver/issues"
+      },
+      "homepage" : "https://github.com/JEEN/p5-WWW-Shorten-Naver",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/JEEN/p5-WWW-Shorten-Naver.git",
+         "web" : "https://github.com/JEEN/p5-WWW-Shorten-Naver"
+      }
+   },
    "version" : "0.01",
+   "x_contributors" : [
+      "Jeen Lee <aiatejin@gmail.com>"
+   ],
    "x_serialization_backend" : "JSON::PP version 2.27400"
 }
