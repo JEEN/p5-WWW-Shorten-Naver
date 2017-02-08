@@ -8,7 +8,7 @@ use Scalar::Util qw(blessed);
 use parent qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw(new VERSION);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 $VERSION = eval $VERSION;
 
 use constant NAVER_SHORTEN_API_ENDPOINT => $ENV{NAVER_SHORTEN_API_URL} || 'https://openapi.naver.com/v1/util/shorturl';
@@ -134,8 +134,31 @@ sub makeashorterlink {
     return $res->{url};
 }
 
-sub makealongerlink { }
+sub makealongerlink {
+    my $self;
+    if ($_[0] && blessed($_[0]) && $_[0]->isa('WWW::Shorten::Bitly')) {
+        $self = shift;
+    }
+    my $url = shift or Carp::croak('No URL passed to makealongerlink');
+    $self ||= __PACKAGE__->new(@_);
+    my $longer_url = $self->expand( url => $url );
+    return $longer_url;
+}
 
+sub expand {
+    my $self = shift; 
+    my $args = _parse_args(@_);
+    my $short_url = $args->{url};
+    unless ($short_url) {
+        Carp::croak("A shortUrl parameter is required.\n");
+    }
+ 
+    my $url = URI->new($short_url);
+    my $ua = __PACKAGE__->ua();
+    my $res = $ua->get($url);
+    my $longer_url = $res->header('Location');
+    return $longer_url;    
+}
 
 sub shorten {
     my $self = shift;
