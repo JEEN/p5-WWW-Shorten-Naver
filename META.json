@@ -42,6 +42,9 @@
       },
       "runtime" : {
          "requires" : {
+            "JSON::MaybeXS" : "0",
+            "URI" : "0",
+            "WWW::Shorten" : "0",
             "perl" : "5.008001"
          }
       },
@@ -63,7 +66,7 @@
          "web" : "https://github.com/JEEN/p5-WWW-Shorten-Naver"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_contributors" : [
       "Jeen Lee <aiatejin@gmail.com>"
    ],
